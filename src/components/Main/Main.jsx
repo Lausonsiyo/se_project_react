@@ -1,8 +1,13 @@
-import WeatherCard from "../WeatherCard/WeatherCard";
+/* CONSTANTS IMPORT  */
 import { defaultClothingItems } from "../../utils/constants";
-import ItemCard from "../ItemCard/ItemCard";
+
+/* STYLES SHEETS IMPORTS */
 import "./Main.css";
-function Main({ weatherData }) {
+
+/* COMPONENTS IMPORTS */
+import WeatherCard from "../WeatherCard/WeatherCard";
+import ItemCard from "../ItemCard/ItemCard";
+function Main({ weatherData, handleCardClick }) {
   return (
     <main>
       <WeatherCard />
@@ -12,11 +17,17 @@ function Main({ weatherData }) {
         </p>
         <ul className="cards__list">
           {defaultClothingItems
-            // .filter((item) => {
-            //   return item.weather === weatherData.type;
-            // })
+            .filter((item) => {
+              return item.weather === weatherData.type;
+            })
             .map((item) => {
-              return <ItemCard key={item._id} item={item} />;
+              return (
+                <ItemCard
+                  key={item._id}
+                  item={item}
+                  onCardClick={handleCardClick}
+                />
+              );
             })}
         </ul>
       </section>

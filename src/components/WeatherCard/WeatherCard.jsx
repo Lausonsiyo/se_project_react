@@ -1,5 +1,8 @@
-import sunny from "../../assets/sunny.png";
+// STYLES SHEETS IMPORTS
 import "./WeatherCard.css";
+
+// IMAGES IMPORTS
+import sunny from "../../assets/sunny.png";
 
 function WeatherCard() {
   return (

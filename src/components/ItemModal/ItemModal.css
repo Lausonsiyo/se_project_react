@@ -1,0 +1,28 @@
+.modal__content_type_image {
+  padding: 0;
+  max-width: 498px;
+  max-height: 610px;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.modal__image {
+  max-width: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal__close {
+  opacity: 0.3;
+}
+
+.modal__caption {
+  margin: 0;
+  padding: 20px 0 12px 32px;
+}
+
+.modal__weather {
+  margin: 0;
+  padding: 0 0 0 32px;
+}
