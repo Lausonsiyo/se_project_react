@@ -1,15 +1,21 @@
-// STYLES SHEETS IMPORTS
+/* STYLES SHEETS IMPORTS */
 import "./Header.css";
 
-// IMAGES IMPORTS
+/* IMAGES IMPORTS */
 import logo from "../../assets/logo.svg";
 import avatarimg from "../../assets/avatarimg.png";
 
-function Header({ handleAddNewGarment }) {
+function Header({ handleAddNewGarment, weatherData }) {
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
   return (
     <header className="header">
       <img className="header__logo" src={logo} alt="Logo" />
-      <p className="header__date-and-location">DATE, LOCATION</p>
+      <p className="header__date-and-location">
+        {currentDate}, {weatherData.city}
+      </p>
       <button
         onClick={handleAddNewGarment}
         type="button"
