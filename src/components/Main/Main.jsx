@@ -1,4 +1,4 @@
-/* UTILS IMPORT  */
+/* UTILS IMPORTS  */
 import { defaultClothingItems } from "../../utils/constants";
 
 /* STYLES SHEETS IMPORTS */

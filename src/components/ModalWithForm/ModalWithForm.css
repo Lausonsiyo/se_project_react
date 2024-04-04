@@ -88,9 +88,9 @@
   margin-right: 11px;
 }
 
-/* .modal__radio-input:checked::before {
-  opacity: 0.3;
-} */
+.modal__radio-input:checked {
+  opacity: 1;
+}
 
 .modal__radio-buttons {
   border: none;
