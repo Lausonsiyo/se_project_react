@@ -54,6 +54,10 @@
   opacity: 0.5;
 }
 
+.modal__label_type_radio:checked {
+  opacity: 1;
+}
+
 .modal__label_type_radio:last-child {
   padding: 0 0 32px;
 }

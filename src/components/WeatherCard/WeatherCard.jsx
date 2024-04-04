@@ -11,11 +11,10 @@ function WeatherCard({ weatherData }) {
       option.condition === weatherData.condition
     );
   });
-  console.log(filteredOptions);
 
   let weatherOption;
   if (filteredOptions.length === 0) {
-    // weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
+    weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
   } else {
     weatherOption = filteredOptions[0];
   }
