@@ -27,7 +27,7 @@
   padding: 0 0 0 32px;
 }
 
-.modal__opened {
+.modal_type_preview {
   padding: 0 20px;
 }
 
