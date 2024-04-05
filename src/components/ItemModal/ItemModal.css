@@ -26,3 +26,13 @@
   margin: 0;
   padding: 0 0 0 32px;
 }
+
+.modal__opened {
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 400px) {
+  .modal__content_type_image {
+    max-height: 463px;
+  }
+}

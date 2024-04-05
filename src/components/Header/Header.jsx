@@ -5,25 +5,33 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatarimg from "../../assets/avatarimg.png";
 
-function Header({ handleAddNewGarment, weatherData }) {
+function Header({ handleAddNewGarment, weatherData, isMobileMenuOpen }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
   return (
     <header className="header">
-      <img className="header__logo" src={logo} alt="Logo" />
-      <p className="header__date-and-location">
-        {currentDate}, {weatherData.city}
-      </p>
-      <button
-        onClick={handleAddNewGarment}
-        type="button"
-        className="header__add-clothes-button"
+      <div className="header__container header__container_type_logo">
+        <img className="header__logo" src={logo} alt="Logo" />
+        <p className="header__date-and-location">
+          {currentDate}, {weatherData.city}
+        </p>
+      </div>
+      <div
+        className={`header__container ${
+          isMobileMenuOpen
+            ? "header__container_type_mobile"
+            : "header__container_type_desktop"
+        }`}
       >
-        + Add clothes
-      </button>
-      <div className="header__user-container">
+        <button
+          onClick={handleAddNewGarment}
+          type="button"
+          className="header__add-clothes-button"
+        >
+          + Add clothes
+        </button>
         <p className="header__username">Terrence Tegegne</p>
         <img
           src={avatarimg}
@@ -31,6 +39,7 @@ function Header({ handleAddNewGarment, weatherData }) {
           className="header__avatar"
         />
       </div>
+      <button className="header__menu"></button>
     </header>
   );
 }

@@ -4,8 +4,8 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="footer__content">
-      <p>Developed by Andres Lauson</p>
-      <p>2024</p>
+      <p className="footer__text">Developed by Andres Lauson</p>
+      <p className="footer__text">2024</p>
     </div>
   );
 }

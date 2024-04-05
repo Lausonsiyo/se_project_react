@@ -3,11 +3,17 @@
   align-items: center;
   padding: 32px 0 28px;
   font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  justify-content: space-between;
   font-weight: 700;
 }
 
 .header__logo {
   margin-right: 24px;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
 }
 
 .header__date-and-location {
@@ -19,14 +25,57 @@
   border: none;
   font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
+  cursor: pointer;
 }
 
-.header__user-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.header__avatar {
+  padding: 0 0 0 15px;
 }
 
 .header__username {
   margin: 0;
+}
+
+.header__menu {
+  display: none;
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    display: block;
+    height: 95px;
+    padding: 18px 0 16px;
+  }
+
+  .header__container_type_desktop {
+    /* visibility: hidden; */
+  }
+
+  .header__date-and-location {
+    margin: 32px 0 0;
+  }
+
+  .header__menu {
+    display: block;
+    background: transparent url("../../assets/menubttn.svg");
+    background-size: cover;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .header__container_type_logo {
+    display: block;
+  }
+
+  .header__container_type_mobile {
+    visibility: visible;
+    height: 208px;
+    max-width: 343px;
+    background-color: white;
+  }
 }

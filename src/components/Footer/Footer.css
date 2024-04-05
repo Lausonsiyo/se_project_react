@@ -8,3 +8,13 @@
   flex-wrap: wrap;
   margin: 171px 0 0;
 }
+
+.footer__text {
+  margin: 0;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__content {
+    margin: 83px 0 0;
+  }
+}
