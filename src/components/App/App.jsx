@@ -61,6 +61,8 @@ function App() {
         <Header
           handleAddNewGarment={handleAddNewGarment}
           weatherData={weatherData}
+          toggleMobileMenu={toggleMobileMenu}
+          isMobileMenuOpen={isMobileMenuOpen}
         />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         <Footer />

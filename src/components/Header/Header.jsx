@@ -5,7 +5,12 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatarimg from "../../assets/avatarimg.png";
 
-function Header({ handleAddNewGarment, weatherData, isMobileMenuOpen }) {
+function Header({
+  handleAddNewGarment,
+  weatherData,
+  isMobileMenuOpen,
+  toggleMobileMenu,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -26,6 +31,11 @@ function Header({ handleAddNewGarment, weatherData, isMobileMenuOpen }) {
         }`}
       >
         <button
+          onClick={toggleMobileMenu}
+          className="modal__close_type_mobile"
+          type="button"
+        ></button>
+        <button
           onClick={handleAddNewGarment}
           type="button"
           className="header__add-clothes-button"
@@ -39,7 +49,11 @@ function Header({ handleAddNewGarment, weatherData, isMobileMenuOpen }) {
           className="header__avatar"
         />
       </div>
-      <button className="header__menu"></button>
+      <button
+        className="header__menu"
+        type="button"
+        onClick={toggleMobileMenu}
+      ></button>
     </header>
   );
 }

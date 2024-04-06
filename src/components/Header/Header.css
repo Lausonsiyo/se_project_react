@@ -26,6 +26,7 @@
   font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
   cursor: pointer;
+  grid-area: addutton;
 }
 
 .header__avatar {
@@ -38,6 +39,23 @@
 
 .header__menu {
   display: none;
+}
+
+.modal__close_type_mobile {
+  visibility: hidden;
+  position: absolute;
+  opacity: 1;
+  border: none;
+  top: 20px;
+  right: 28px;
+  width: 21px;
+  height: 21px;
+  background-image: url(../../assets/closexx.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  grid-area: close;
 }
 
 @media screen and (max-width: 400px) {
@@ -71,11 +89,43 @@
   .header__container_type_logo {
     display: block;
   }
+  .header__username {
+    grid-area: name;
+    justify-self: center;
+  }
+
+  .header__avatar {
+    grid-area: avatar;
+    padding: 0;
+  }
 
   .header__container_type_mobile {
+    font-weight: 700;
+    line-height: 24.8px;
+    font-size: 20px;
+    display: grid;
+    grid-template-areas:
+      ". . close"
+      ". name avatar"
+      ". addutton .";
     visibility: visible;
     height: 208px;
     max-width: 343px;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 20px;
+    z-index: 2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .modal__close_type_mobile {
+    visibility: visible;
+    grid-area: close;
+  }
+
+  .header__add-clothes-button {
     background-color: white;
   }
 }
