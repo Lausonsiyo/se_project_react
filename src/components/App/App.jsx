@@ -60,8 +60,8 @@ function App() {
       <div className="page__content">
         <Header
           handleAddNewGarment={handleAddNewGarment}
-          weatherData={weatherData}
           toggleMobileMenu={toggleMobileMenu}
+          weatherData={weatherData}
           isMobileMenuOpen={isMobileMenuOpen}
         />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
@@ -70,8 +70,8 @@ function App() {
       <ModalWithForm
         buttonText="Add garment"
         title="New garment"
-        activeModal={activeModal}
         onClose={handleCloseClick}
+        isOpen={activeModal === "add-garment"}
       >
         <label htmlFor="name" className="modal__label">
           Name
@@ -138,7 +138,7 @@ function App() {
         </fieldset>
       </ModalWithForm>
       <ItemModal
-        activeModal={activeModal}
+        isOpen={activeModal === "preview"}
         cardData={selectedCard}
         onClose={handleCloseClick}
       />

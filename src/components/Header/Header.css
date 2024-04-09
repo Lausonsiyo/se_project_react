@@ -41,23 +41,6 @@
   display: none;
 }
 
-.modal__close_type_mobile {
-  visibility: hidden;
-  position: absolute;
-  opacity: 1;
-  border: none;
-  top: 20px;
-  right: 28px;
-  width: 21px;
-  height: 21px;
-  background-image: url(../../assets/closexx.svg);
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  cursor: pointer;
-  grid-area: close;
-}
-
 @media screen and (max-width: 400px) {
   .header {
     display: block;
@@ -66,29 +49,13 @@
   }
 
   .header__container_type_desktop {
-    visibility: hidden;
+    display: none;
   }
 
   .header__date-and-location {
-    margin: 32px 0 0;
+    margin: 32px 0 13px;
   }
 
-  .header__menu {
-    display: block;
-    background: transparent url("../../assets/menubttn.svg");
-    background-size: cover;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .header__container_type_logo {
-    display: block;
-  }
   .header__username {
     grid-area: name;
     justify-self: center;
@@ -97,6 +64,10 @@
   .header__avatar {
     grid-area: avatar;
     padding: 0;
+  }
+
+  .header__container {
+    display: block;
   }
 
   .header__container_type_mobile {
@@ -120,12 +91,37 @@
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   }
 
+  .header__menu {
+    display: block;
+    background: transparent url("../../assets/menubttn.svg");
+    background-size: cover;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    cursor: pointer;
+  }
+
   .modal__close_type_mobile {
-    visibility: visible;
-    grid-area: close;
+    position: absolute;
+    opacity: 1;
+    border: none;
+    top: 35px;
+    right: 37px;
+    width: 21px;
+    height: 21px;
+    background-image: url(../../assets/closexx.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    z-index: 4;
   }
 
   .header__add-clothes-button {
     background-color: white;
+    margin-bottom: auto;
   }
 }
