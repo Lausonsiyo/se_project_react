@@ -127,7 +127,7 @@
     align-items: end;
   }
 
-  .modal__content_type_add-garment {
+  .modal__content {
     border-radius: 12px 12px 0 0;
   }
 }
