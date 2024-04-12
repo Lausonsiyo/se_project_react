@@ -4,7 +4,7 @@ import "./ItemModal.css";
 function ItemModal({ cardData, onClose, isOpen }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"} modal_type_preview`}>
-      <div className="modal__content">
+      <div className="modal__content modal__content_type_image">
         <button onClick={onClose} className="modal__close" type="button" />
         <img src={cardData.link} alt={cardData.name} className="modal__image" />
         <div className="modal__footer">
