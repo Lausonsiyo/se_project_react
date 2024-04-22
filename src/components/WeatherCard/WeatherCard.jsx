@@ -1,10 +1,15 @@
-// STYLES SHEETS IMPORTS
+/* CONTEXTS IMPORTS */
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { useContext } from "react";
+
+/* STYLES SHEETS IMPORTS */
 import "./WeatherCard.css";
 
 /* UTILS IMPORTS  */
 import { weatherOptions, defaultWeatherOptions } from "../../utils/constants";
 
 function WeatherCard({ weatherData }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const filteredOptions = weatherOptions.filter((option) => {
     return (
       option.day === weatherData.isDay &&
@@ -21,7 +26,10 @@ function WeatherCard({ weatherData }) {
 
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">{weatherData.temp.F} &deg; F</p>
+      <p className="weather-card__temp">
+        {weatherData.temp[currentTemperatureUnit]} &deg;{" "}
+        {currentTemperatureUnit === "C" ? "C" : "F"}
+      </p>
       <img
         src={weatherOption?.url}
         alt={`Card showing ${
