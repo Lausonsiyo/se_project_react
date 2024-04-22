@@ -5,6 +5,9 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatarimg from "../../assets/avatarimg.png";
 
+/*  COMPONENTS IMPORTS */
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+
 function Header({
   handleAddNewGarment,
   weatherData,
@@ -15,7 +18,6 @@ function Header({
     month: "long",
     day: "numeric",
   });
-  console.log(isMobileMenuOpen);
   return (
     <header className="header">
       <div className="header__container">
@@ -38,6 +40,7 @@ function Header({
             : "header__container_type_desktop"
         }`}
       >
+        {!isMobileMenuOpen && <ToggleSwitch />}
         <button
           onClick={handleAddNewGarment}
           type="button"

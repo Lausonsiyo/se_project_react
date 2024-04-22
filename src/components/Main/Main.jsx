@@ -7,6 +7,7 @@ import "./Main.css";
 /* COMPONENTS IMPORTS */
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
+
 function Main({ weatherData, handleCardClick }) {
   return (
     <main>
