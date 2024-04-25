@@ -115,6 +115,7 @@ function App() {
           isOpen={activeModal === "preview"}
           cardData={selectedCard}
           onClose={handleCloseClick}
+          handleDeleteConfirmModal={handleDeleteConfirmModal}
         />
         <DeleteConfirmModal
           isOpen={activeModal === "deleteConfirm"}

@@ -3,7 +3,9 @@ import "./DeleteConfirmModal.css";
 
 function DeleteConfirmModal({ onClose, isOpen }) {
   return (
-    <div className={`deleteConfirmModal ${isOpen && "modal_opened"}`}>
+    <div
+      className={`deleteConfirmModal ${isOpen && "deleteConfirmModal_opened"}`}
+    >
       <div className="deleteConfirmModal__container">
         <button
           className="deleteConfirmModal__close-button"

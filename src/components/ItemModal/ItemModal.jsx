@@ -1,7 +1,11 @@
 /* STYLES SHEETS IMPORTS */
 import "./ItemModal.css";
 
-function ItemModal({ cardData, onClose, isOpen }) {
+function ItemModal({ cardData, onClose, isOpen, handleDeleteConfirmModal }) {
+  const handleDeleteButtonModal = () => {
+    handleDeleteConfirmModal(cardData._id);
+  };
+
   return (
     <div className={`modal ${isOpen && "modal_opened"} modal_type_preview`}>
       <div className="modal__content modal__content_type_image">
@@ -10,7 +14,12 @@ function ItemModal({ cardData, onClose, isOpen }) {
         <div className="modal__footer">
           <p className="modal__caption">{cardData.name}</p>
           <p className="modal__weather">Weather: {cardData.weather}</p>
-          <button className="modal__delete-button">Delete Item</button>
+          <button
+            className="modal__delete-button"
+            onClick={handleDeleteButtonModal}
+          >
+            Delete Item
+          </button>
         </div>
       </div>
     </div>
