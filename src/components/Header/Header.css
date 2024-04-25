@@ -27,6 +27,7 @@
   font-weight: 700;
   cursor: pointer;
   grid-area: addutton;
+  background: none;
 }
 
 .header__avatar {

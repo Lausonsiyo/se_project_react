@@ -11,7 +11,6 @@ function ToggleSwitch() {
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext
   );
-  console.log(currentTemperatureUnit);
   return (
     <>
       <input
