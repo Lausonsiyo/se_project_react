@@ -37,6 +37,8 @@
     column-gap: 15px;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
+    width: fit-content;
+    margin: auto;
   }
 
   .cards__button-randomize {

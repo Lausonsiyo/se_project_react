@@ -20,11 +20,13 @@
 .modal__caption {
   margin: 0;
   padding: 20px 0 12px 32px;
+  grid-area: caption;
 }
 
 .modal__weather {
   margin: 0;
   padding: 0 0 0 32px;
+  grid-area: weather;
 }
 
 .modal_type_preview {
@@ -32,9 +34,29 @@
   align-items: center;
 }
 
+.modal__footer {
+  display: grid;
+  grid-template-areas:
+    "caption button"
+    "weather button";
+}
+
+.modal__delete-button {
+  grid-area: button;
+  border: none;
+  background: none;
+  padding: 20px 32px 0 0;
+  height: 24px;
+  color: rgba(255, 77, 0, 1);
+}
+
 @media screen and (max-width: 650px) {
   .modal__content_type_image {
-    max-height: 463px;
+    height: fit-content;
     border-radius: 20px;
+  }
+
+  .modal__weather {
+    padding-bottom: 40px;
   }
 }

@@ -1,0 +1,52 @@
+.deleteConfirmModal__container {
+  align-items: center;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  display: flex;
+  height: 280px;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  line-height: 24px;
+  width: 670px;
+}
+
+.deleteConfirmModal__close-button {
+  align-self: flex-end;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-image: url(../../assets/closexx.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  opacity: 0.3;
+  margin: 20px 20px 0 0;
+}
+
+.deleteConfirmModal__text {
+  margin: 20px 0 0 0;
+}
+
+.deleteConfirmModal__text:last-of-type {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.deleteConfirmModal__confirmation-button {
+  background: none;
+  border: none;
+  color: rgba(255, 77, 0, 1);
+  cursor: pointer;
+  height: 24px;
+  margin-bottom: 24px;
+}
+
+.deleteConfirmModal__cancelation-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

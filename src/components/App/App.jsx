@@ -17,6 +17,7 @@ import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Profile from "../Profile/Profile.jsx";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal.jsx";
 
 /* CONTEXT IMPORTS */
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
@@ -49,6 +50,10 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleDeleteConfirmModal = () => {
+    setActiveModal("deleteConfirm");
+  };
+
   const handleCloseClick = () => {
     setActiveModal("");
   };
@@ -70,6 +75,7 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
@@ -108,6 +114,10 @@ function App() {
         <ItemModal
           isOpen={activeModal === "preview"}
           cardData={selectedCard}
+          onClose={handleCloseClick}
+        />
+        <DeleteConfirmModal
+          isOpen={activeModal === "deleteConfirm"}
           onClose={handleCloseClick}
         />
       </CurrentTemperatureUnitContext.Provider>
