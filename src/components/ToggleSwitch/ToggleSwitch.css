@@ -50,10 +50,10 @@
   z-index: 1;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 650px) {
   .toggle-switch-label {
     position: absolute;
     top: 27px;
-    left: 250px;
+    left: 335px;
   }
 }

@@ -7,6 +7,10 @@
   font-weight: 700;
 }
 
+.modal__close_type_mobile {
+  visibility: hidden;
+}
+
 .header__logo {
   margin-right: 24px;
 }
@@ -38,11 +42,21 @@
   margin: 0;
 }
 
+.header__username-link {
+  text-decoration: none;
+  color: black;
+}
+
 .header__menu {
   display: none;
 }
 
-@media screen and (max-width: 400px) {
+.header__profile-info {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 650px) {
   .header {
     display: block;
     height: 95px;
@@ -58,8 +72,9 @@
   }
 
   .header__username {
-    grid-area: name;
-    justify-self: center;
+    margin-right: 12px;
+    /* grid-area: name;
+    justify-self: center; */
   }
 
   .header__avatar {
@@ -78,15 +93,15 @@
     display: grid;
     grid-template-areas:
       ". . close"
-      ". name avatar"
+      ". name ."
       ". addutton .";
     visibility: visible;
     height: 208px;
-    max-width: 343px;
+    /* max-width: 343px; */
     width: 100%;
     background-color: white;
-    position: absolute;
-    top: 20px;
+    position: relative;
+    top: -104px;
     z-index: 2;
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
@@ -106,6 +121,7 @@
   }
 
   .modal__close_type_mobile {
+    visibility: visible;
     position: absolute;
     opacity: 1;
     border: none;
@@ -122,7 +138,16 @@
   }
 
   .header__add-clothes-button {
-    background-color: white;
     margin-bottom: auto;
+  }
+
+  .header__username-link {
+    display: grid;
+    grid-area: name;
+  }
+
+  .header__profile-info {
+    margin: auto;
+    /* display: none; */
   }
 }

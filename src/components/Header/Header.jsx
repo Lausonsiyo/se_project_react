@@ -1,3 +1,6 @@
+/* REACT DEPENDENCIES IMPORTS */
+import { Link } from "react-router-dom";
+
 /* STYLES SHEETS IMPORTS */
 import "./Header.css";
 
@@ -21,7 +24,9 @@ function Header({
   return (
     <header className="header">
       <div className="header__container">
-        <img className="header__logo" src={logo} alt="Logo" />
+        <Link to="/">
+          <img className="header__logo" src={logo} alt="Logo" />
+        </Link>
         <p className="header__date-and-location">
           {currentDate}, {weatherData.city}
         </p>
@@ -48,12 +53,16 @@ function Header({
         >
           + Add clothes
         </button>
-        <p className="header__username">Terrence Tegegne</p>
-        <img
-          src={avatarimg}
-          alt="Terrence Tegegne"
-          className="header__avatar"
-        />
+        <Link className="header__username-link" to="/profile">
+          <div className="header__profile-info">
+            <p className="header__username">Terrence Tegegne</p>
+            <img
+              src={avatarimg}
+              alt="Terrence Tegegne"
+              className="header__avatar"
+            />
+          </div>
+        </Link>
       </div>
     </header>
   );

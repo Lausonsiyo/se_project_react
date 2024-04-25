@@ -13,7 +13,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 650px) {
   .footer__content {
     margin: 83px 0 0;
   }

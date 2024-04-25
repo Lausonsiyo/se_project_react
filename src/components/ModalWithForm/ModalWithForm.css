@@ -120,7 +120,7 @@
   opacity: 0.3;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 650px) {
   .modal {
     padding: 0;
     display: flex;
