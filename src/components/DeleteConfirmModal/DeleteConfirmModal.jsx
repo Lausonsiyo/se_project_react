@@ -1,7 +1,10 @@
 /* STYLE SHEETS */
 import "./DeleteConfirmModal.css";
 
-function DeleteConfirmModal({ onClose, isOpen }) {
+function DeleteConfirmModal({ onClose, isOpen, handleCardDelete }) {
+  const handleDeleteAffirmation = () => {
+    handleCardDelete();
+  };
   return (
     <div
       className={`deleteConfirmModal ${isOpen && "deleteConfirmModal_opened"}`}
@@ -19,6 +22,7 @@ function DeleteConfirmModal({ onClose, isOpen }) {
         <button
           className="deleteConfirmModal__confirmation-button"
           type="button"
+          onClick={handleDeleteAffirmation}
         >
           Yes, delete item
         </button>

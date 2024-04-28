@@ -8,6 +8,7 @@ import "./App.css";
 /* UTILS IMPORT */
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import { coordinates, APIkey } from "../../utils/constants.js";
+import { getItems, addItem, removeItem } from "../../utils/api.js";
 
 /* COMPONENTS IMPORTS */
 import Header from "../Header/Header";
@@ -32,6 +33,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   function toggleMobileMenu() {
     if (isMobileMenuOpen) {
@@ -52,6 +54,10 @@ function App() {
 
   const handleDeleteConfirmModal = () => {
     setActiveModal("deleteConfirm");
+  };
+
+  const handleCardDelete = () => {
+    console.log(cardData);
   };
 
   const handleCloseClick = () => {
@@ -76,6 +82,14 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
@@ -95,6 +109,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
                 />
               }
             />
@@ -120,6 +135,7 @@ function App() {
         <DeleteConfirmModal
           isOpen={activeModal === "deleteConfirm"}
           onClose={handleCloseClick}
+          handleCardDelete={handleCardDelete}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
