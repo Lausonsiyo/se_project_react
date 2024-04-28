@@ -24,6 +24,7 @@ import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal.jsx";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 
 function App() {
+  /* INITIAL CONTEXTS */
   const [weatherData, setWeatherdata] = useState({
     type: "",
     temp: { F: 999 },
@@ -35,6 +36,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
 
+  /* RESPONSIVE MENU MOBILE FUNCTION */
   function toggleMobileMenu() {
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
@@ -43,6 +45,7 @@ function App() {
     }
   }
 
+  /* HANDLER FUNCTIONS */
   const handleAddNewGarment = () => {
     setActiveModal("add-garment");
   };
@@ -52,12 +55,8 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleDeleteConfirmModal = () => {
+  const handleOpenDeleteConfirmModal = () => {
     setActiveModal("deleteConfirm");
-  };
-
-  const handleCardDelete = () => {
-    console.log(cardData);
   };
 
   const handleCloseClick = () => {
@@ -69,9 +68,28 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
+  /* -ADD, REMOVE- FUNCTIONALITY FUNCTIONS  */
   const onAddItem = (values) => {
-    console.log(values);
+    addItem(values)
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
+      })
+      .then(setActiveModal(""))
+      .catch((error) => console.error(error));
   };
+
+  const handleCardDelete = () => {
+    removeItem(selectedCard._id)
+      .then(() => {
+        setClothingItems(
+          clothingItems.filter((item) => item._id !== selectedCard._id)
+        );
+        setActiveModal("");
+      })
+      .catch((error) => console.error(error));
+  };
+
+  /* HOOKS */
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -115,7 +133,13 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile handleCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  handleAddNewGarment={handleAddNewGarment}
+                  clothingItems={clothingItems}
+                  handleCardClick={handleCardClick}
+                />
+              }
             />
           </Routes>
 
@@ -130,7 +154,7 @@ function App() {
           isOpen={activeModal === "preview"}
           cardData={selectedCard}
           onClose={handleCloseClick}
-          handleDeleteConfirmModal={handleDeleteConfirmModal}
+          handleOpenDeleteConfirmModal={handleOpenDeleteConfirmModal}
         />
         <DeleteConfirmModal
           isOpen={activeModal === "deleteConfirm"}

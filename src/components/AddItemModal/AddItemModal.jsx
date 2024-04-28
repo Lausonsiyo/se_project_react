@@ -6,6 +6,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal({ handleCloseClick, isOpen, onAddItem }) {
   const [name, setName] = useState("");
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -44,6 +45,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddItem }) {
           maxLength="30"
           value={name}
           onChange={handleNameChange}
+          required
         />
       </label>
       <label htmlFor="imageUrl" className="modal__label">
@@ -53,10 +55,9 @@ function AddItemModal({ handleCloseClick, isOpen, onAddItem }) {
           id="imageUrl"
           className="modal__input"
           placeholder="Image URL"
-          minLength="1"
-          maxLength="30"
           value={imageUrl}
           onChange={handleImageUrlChange}
+          required
         />
       </label>
       <fieldset className="modal__radio-buttons">
@@ -69,6 +70,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddItem }) {
             className="modal__radio-input"
             onChange={handleWeatherChange}
             value="hot"
+            required
           />
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
             Hot

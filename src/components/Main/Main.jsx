@@ -1,6 +1,3 @@
-/* UTILS IMPORTS  */
-// import { defaultClothingItems } from "../../utils/constants";
-
 /* CONTEXTS IMPORTS */
 import { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
