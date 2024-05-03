@@ -4,12 +4,16 @@ const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
+function request(url, options) {
+  return fetch(url, options).then(handleServerResponse);
+}
+
 function getItems() {
-  return fetch(`${baseUrl}/items`).then(handleServerResponse);
+  return request(`${baseUrl}/items`);
 }
 
 function addItem({ name, weather, imageUrl }) {
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -17,14 +21,14 @@ function addItem({ name, weather, imageUrl }) {
       weather,
       imageUrl,
     }),
-  }).then(handleServerResponse);
+  });
 }
 
 function removeItem(id) {
-  return fetch(`${baseUrl}/items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
-  }).then(handleServerResponse);
+  });
 }
 
-export { getItems, addItem, removeItem };
+export { getItems, addItem, removeItem, handleServerResponse };

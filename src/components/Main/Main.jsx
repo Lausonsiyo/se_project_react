@@ -1,5 +1,7 @@
-/* CONTEXTS IMPORTS */
+/* REACT DEPENDENCIES IMPORTS */
 import { useContext } from "react";
+
+/* CONTEXTS IMPORTS */
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 /* STYLES SHEETS IMPORTS */

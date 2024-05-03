@@ -1,6 +1,8 @@
+/* REACT DEPENDENCIES IMPORTS */
+import { useContext } from "react";
+
 /* CONTEXTS IMPORTS */
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { useContext } from "react";
 
 /* STYLES SHEETS IMPORTS */
 import "./WeatherCard.css";

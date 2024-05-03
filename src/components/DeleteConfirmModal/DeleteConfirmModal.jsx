@@ -2,9 +2,6 @@
 import "./DeleteConfirmModal.css";
 
 function DeleteConfirmModal({ onClose, isOpen, handleCardDelete }) {
-  const handleDeleteAffirmation = () => {
-    handleCardDelete();
-  };
   return (
     <div
       className={`deleteConfirmModal ${isOpen && "deleteConfirmModal_opened"}`}
@@ -22,7 +19,7 @@ function DeleteConfirmModal({ onClose, isOpen, handleCardDelete }) {
         <button
           className="deleteConfirmModal__confirmation-button"
           type="button"
-          onClick={handleDeleteAffirmation}
+          onClick={handleCardDelete}
         >
           Yes, delete item
         </button>

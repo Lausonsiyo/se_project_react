@@ -1,4 +1,4 @@
-/* STRYLE SHEET IMPORTS */
+/* STYLE SHEET IMPORTS */
 import "./SideBar.css";
 
 /* IMAGES IMPORTS */

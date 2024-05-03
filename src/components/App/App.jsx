@@ -74,7 +74,7 @@ function App() {
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
       })
-      .then(setActiveModal(""))
+      .then(handleCloseClick)
       .catch((error) => console.error(error));
   };
 
@@ -84,13 +84,12 @@ function App() {
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)
         );
-        setActiveModal("");
+        handleCloseClick();
       })
       .catch((error) => console.error(error));
   };
 
   /* HOOKS */
-
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {

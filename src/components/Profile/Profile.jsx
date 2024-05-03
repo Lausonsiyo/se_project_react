@@ -1,7 +1,9 @@
-/* STRYLE SHEET IMPORTS */
+/* STYLE SHEET IMPORTS */
+import "./Profile.css";
+
+/* COMPONENTS IMPORTS */
 import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
-import "./Profile.css";
 
 function Profile({ handleCardClick, clothingItems, handleAddNewGarment }) {
   return (

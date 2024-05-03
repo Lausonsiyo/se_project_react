@@ -21,6 +21,10 @@ function Header({
     month: "long",
     day: "numeric",
   });
+
+  // TODO: hre it is possible to get an access to the URL of the browser, and if it includes "profile" - do something different;
+  // isProfilePage ? ".profile-page" : ''
+
   return (
     <header className="header">
       <div className="header__container">
