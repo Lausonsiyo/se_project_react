@@ -7,7 +7,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 /* HOOKS IMPORTS */
 import { useForm } from "../../hooks/hooks.jsx";
 
-function AddItemModal({ handleCloseClick, isOpen, onAddItem }) {
+function AddItemModal({ handleCloseClick, isOpen, onAddItem, isLoading }) {
   const { values, handleChange, setValues } = useForm({});
 
   const handleSubmit = (e) => {
@@ -22,6 +22,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddItem }) {
       onClose={handleCloseClick}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      isLoading={isLoading}
     >
       <label htmlFor="name" className="modal__label">
         Name

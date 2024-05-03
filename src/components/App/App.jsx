@@ -24,7 +24,7 @@ import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal.jsx";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 
 function App() {
-  /* INITIAL CONTEXTS */
+  /* INITIAL CONTEXTS-/-USESTATE HOOKS  */
   const [weatherData, setWeatherdata] = useState({
     type: "",
     temp: { F: 999 },
@@ -35,6 +35,7 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   /* RESPONSIVE MENU MOBILE FUNCTION */
   function toggleMobileMenu() {
@@ -70,12 +71,16 @@ function App() {
 
   /* -ADD, REMOVE- FUNCTIONALITY FUNCTIONS  */
   const onAddItem = (values) => {
+    setIsLoading(true);
     addItem(values)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
       })
       .then(handleCloseClick)
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleCardDelete = () => {
@@ -148,6 +153,7 @@ function App() {
           handleCloseClick={handleCloseClick}
           isOpen={activeModal === "add-garment"}
           onAddItem={onAddItem}
+          isLoading={isLoading}
         />
         <ItemModal
           isOpen={activeModal === "preview"}
