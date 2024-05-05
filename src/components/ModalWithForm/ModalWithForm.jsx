@@ -12,7 +12,7 @@ function ModalWithForm({
   isLoading,
 }) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} name="addGarment">
       <h2 className="modal__title">{title}</h2>
       <form className="modal__form" onSubmit={onSubmit}>
         {children}

@@ -1,37 +1,29 @@
 /* STYLE SHEETS */
+import Modal from "../Modal/Modal";
 import "./DeleteConfirmModal.css";
 
 function DeleteConfirmModal({ onClose, isOpen, handleCardDelete }) {
   return (
-    <div
-      className={`deleteConfirmModal ${isOpen && "deleteConfirmModal_opened"}`}
-    >
-      <div className="deleteConfirmModal__container">
-        <button
-          className="deleteConfirmModal__close-button"
-          type="button"
-          onClick={onClose}
-        ></button>
-        <p className="deleteConfirmModal__text">
-          Are you sure you want to delete this item?
-        </p>
-        <p className="deleteConfirmModal__text">This action is irreversible.</p>
-        <button
-          className="deleteConfirmModal__confirmation-button"
-          type="button"
-          onClick={handleCardDelete}
-        >
-          Yes, delete item
-        </button>
-        <button
-          className="deleteConfirmModal__cancelation-button"
-          type="button"
-          onClick={onClose}
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
+    <Modal isOpen={isOpen} onClose={onClose} name="deleteConfirmation">
+      <p className="deleteConfirmModal__text">
+        Are you sure you want to delete this item?
+      </p>
+      <p className="deleteConfirmModal__text">This action is irreversible.</p>
+      <button
+        className="deleteConfirmModal__confirmation-button"
+        type="button"
+        onClick={handleCardDelete}
+      >
+        Yes, delete item
+      </button>
+      <button
+        className="deleteConfirmModal__cancelation-button"
+        type="button"
+        onClick={onClose}
+      >
+        Cancel
+      </button>
+    </Modal>
   );
 }
 

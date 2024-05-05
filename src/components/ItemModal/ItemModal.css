@@ -60,4 +60,8 @@
   .modal__weather {
     padding-bottom: 40px;
   }
+
+  .modal_type_image {
+    align-items: center;
+  }
 }

@@ -1,19 +1,4 @@
-.deleteConfirmModal {
-  align-content: center;
-  background-color: #0000004d;
-  bottom: 0;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  visibility: hidden;
-}
-
-.deleteConfirmModal_opened {
-  visibility: visible;
-}
-
-.deleteConfirmModal__container {
+.modal__content_type_deleteConfirmation {
   align-items: center;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -26,7 +11,7 @@
   font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
   line-height: 24px;
   margin: auto;
-  width: 670px;
+  max-width: 670px;
 }
 
 .deleteConfirmModal__close-button {
@@ -68,7 +53,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  .deleteConfirmModal__container {
+  .modal__content_type_deleteConfirmation {
     width: auto;
   }
 
