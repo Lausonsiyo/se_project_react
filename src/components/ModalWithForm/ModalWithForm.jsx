@@ -1,5 +1,6 @@
 /* STYLES SHEETS IMPORTS */
 import "./ModalWithForm.css";
+import Modal from "../Modal/Modal";
 
 function ModalWithForm({
   onSubmit,
@@ -11,18 +12,15 @@ function ModalWithForm({
   isLoading,
 }) {
   return (
-    <div className={`modal ${isOpen && "modal_opened"}`}>
-      <div className="modal__content">
-        <h2 className="modal__title">{title}</h2>
-        <button onClick={onClose} className="modal__close" type="button" />
-        <form className="modal__form" onSubmit={onSubmit}>
-          {children}
-          <button className="modal__submit" type="submit">
-            {isLoading ? "Saving..." : buttonText}
-          </button>
-        </form>
-      </div>
-    </div>
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <h2 className="modal__title">{title}</h2>
+      <form className="modal__form" onSubmit={onSubmit}>
+        {children}
+        <button className="modal__submit" type="submit">
+          {isLoading ? "Saving..." : buttonText}
+        </button>
+      </form>
+    </Modal>
   );
 }
 
