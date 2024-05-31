@@ -23,6 +23,7 @@ function AddItemModal({ handleCloseClick, isOpen, onAddItem, isLoading }) {
     <ModalWithForm
       buttonText="Add garment"
       title="New garment"
+      formName="addGarment"
       onClose={handleCloseClick}
       isOpen={isOpen}
       onSubmit={handleSubmit}

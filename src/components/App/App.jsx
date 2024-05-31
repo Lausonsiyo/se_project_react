@@ -19,6 +19,8 @@ import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import Profile from "../Profile/Profile.jsx";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 
 /* CONTEXT IMPORTS */
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
@@ -58,6 +60,14 @@ function App() {
 
   const handleOpenDeleteConfirmModal = () => {
     setActiveModal("deleteConfirm");
+  };
+
+  const handleOpenLoginModal = () => {
+    setActiveModal("login");
+  };
+
+  const handleOpenRegisterModal = () => {
+    setActiveModal("register");
   };
 
   const handleCloseClick = () => {
@@ -152,6 +162,7 @@ function App() {
         <AddItemModal
           handleCloseClick={handleCloseClick}
           isOpen={activeModal === "add-garment"}
+          // isOpen={true}
           onAddItem={onAddItem}
           isLoading={isLoading}
         />
@@ -165,6 +176,20 @@ function App() {
           isOpen={activeModal === "deleteConfirm"}
           onClose={handleCloseClick}
           handleCardDelete={handleCardDelete}
+        />
+        <LoginModal
+          handleCloseClick={handleCloseClick}
+          handleOpenLoginModal={handleOpenLoginModal}
+          isLoading={isLoading}
+          isOpen={activeModal === "login"}
+          // isOpen={true}
+        />
+        <RegisterModal
+          handleCloseClick={handleCloseClick}
+          handleOpenRegisterModal={handleOpenRegisterModal}
+          isLoading={isLoading}
+          isOpen={activeModal === "register"}
+          // isOpen={true}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>

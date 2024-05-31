@@ -1,0 +1,25 @@
+.modal__button_log-in {
+  background: none;
+  border: none;
+  color: rgba(0, 0, 0);
+  cursor: pointer;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: 24px;
+  line-height: 20px;
+  opacity: 0.5;
+  position: relative;
+  top: 28px;
+  left: 85px;
+  text-align: left;
+  transition: ease-in-out 0.3s;
+}
+
+.modal__button_log-in:hover {
+  opacity: 1;
+}
+
+.modal__content {
+  /* height: fit-content; */
+}
