@@ -1,5 +1,7 @@
 /* STYLES SHEETS IMPORTS */
 import "./ModalWithForm.css";
+
+/* COMPONENTS IMPORTS */
 import Modal from "../Modal/Modal";
 
 function ModalWithForm({

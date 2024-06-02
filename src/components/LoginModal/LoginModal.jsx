@@ -7,7 +7,20 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 /* STYLES SHEETS IMPORTS */
 import "./LoginModal.css";
 
-function LoginModal({ handleCloseClick, isOpen, isLoading }) {
+/* HOOKS IMPORTS */
+import { useForm } from "../../hooks/hooks.jsx";
+
+function LoginModal({ handleCloseClick, isOpen, isLoading, handleSingIn }) {
+  const { values, handleChange, setValues } = useForm({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSingIn(values);
+  };
+
   return (
     <ModalWithForm
       buttonText="Login"
@@ -15,7 +28,7 @@ function LoginModal({ handleCloseClick, isOpen, isLoading }) {
       onClose={handleCloseClick}
       formName="login"
       isOpen={isOpen}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       isLoading={isLoading}
     >
       <label htmlFor="email" className="modal__label">
@@ -26,8 +39,8 @@ function LoginModal({ handleCloseClick, isOpen, isLoading }) {
           className="modal__input"
           placeholder="Email"
           minLength="1"
-          //   value={values.name}
-          //   onChange={handleChange}
+          value={values.email}
+          onChange={handleChange}
           name="email"
           required
         />
@@ -35,12 +48,12 @@ function LoginModal({ handleCloseClick, isOpen, isLoading }) {
       <label htmlFor="password" className="modal__label">
         Password
         <input
-          type="url"
+          type="password"
           id="password"
           className="modal__input"
           placeholder="Password"
-          //   value={values.imageUrl}
-          //   onChange={handleChange}
+          value={values.password}
+          onChange={handleChange}
           name="password"
           required
         />

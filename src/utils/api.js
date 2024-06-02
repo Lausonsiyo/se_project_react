@@ -15,7 +15,10 @@ function getItems() {
 function addItem({ name, weather, imageUrl }) {
   return request(`${baseUrl}/items`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({
       name,
       weather,
@@ -27,8 +30,11 @@ function addItem({ name, weather, imageUrl }) {
 function removeItem(id) {
   return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   });
 }
 
-export { getItems, addItem, removeItem, handleServerResponse };
+export { getItems, addItem, removeItem, handleServerResponse, baseUrl };

@@ -9,6 +9,7 @@ import "./App.css";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import { coordinates, APIkey } from "../../utils/constants.js";
 import { getItems, addItem, removeItem } from "../../utils/api.js";
+import * as auth from "../../utils/auth.js";
 
 /* COMPONENTS IMPORTS */
 import Header from "../Header/Header";
@@ -21,6 +22,7 @@ import Profile from "../Profile/Profile.jsx";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 /* CONTEXT IMPORTS */
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
@@ -38,6 +40,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   /* RESPONSIVE MENU MOBILE FUNCTION */
   function toggleMobileMenu() {
@@ -104,7 +107,7 @@ function App() {
       .catch((error) => console.error(error));
   };
 
-  /* HOOKS */
+  /* USE EFFECT HOOKS */
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -121,6 +124,31 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      auth
+        .checkToken(token)
+        .then((res) => {
+          setIsLoggedIn(true);
+        })
+        .catch(console.error);
+    }
+  }, [isLoggedIn]);
+
+  /* AUTHORIZATION HANDLER */
+  const handleSingUp = (values) => {
+    console.log(values);
+    auth.singUp(values);
+  };
+
+  const handleSingIn = (values) => {
+    console.log(values);
+    auth.singIn(values).then((res) => {
+      localStorage.setItem("jwt", res.token);
+    });
+  };
 
   return (
     <div className="page">
@@ -148,11 +176,13 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  handleAddNewGarment={handleAddNewGarment}
-                  clothingItems={clothingItems}
-                  handleCardClick={handleCardClick}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    handleAddNewGarment={handleAddNewGarment}
+                    clothingItems={clothingItems}
+                    handleCardClick={handleCardClick}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
@@ -181,6 +211,7 @@ function App() {
           handleCloseClick={handleCloseClick}
           handleOpenLoginModal={handleOpenLoginModal}
           isLoading={isLoading}
+          handleSingIn={handleSingIn}
           isOpen={activeModal === "login"}
           // isOpen={true}
         />
@@ -188,6 +219,7 @@ function App() {
           handleCloseClick={handleCloseClick}
           handleOpenRegisterModal={handleOpenRegisterModal}
           isLoading={isLoading}
+          handleSingUp={handleSingUp}
           isOpen={activeModal === "register"}
           // isOpen={true}
         />

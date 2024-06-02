@@ -7,7 +7,22 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 /* STYLES SHEETS IMPORTS */
 import "./RegisterModal.css";
 
-function RegisterModal({ handleCloseClick, isOpen, isLoading }) {
+/* HOOKS IMPORTS */
+import { useForm } from "../../hooks/hooks.jsx";
+
+function RegisterModal({ handleCloseClick, isOpen, isLoading, handleSingUp }) {
+  const { values, handleChange, setValues } = useForm({
+    email: "",
+    password: "",
+    name: "",
+    avatarUrl: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSingUp(values);
+  };
+
   return (
     <ModalWithForm
       buttonText="Sing Up"
@@ -15,19 +30,19 @@ function RegisterModal({ handleCloseClick, isOpen, isLoading }) {
       onClose={handleCloseClick}
       formName="register"
       isOpen={isOpen}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       isLoading={isLoading}
     >
       <label htmlFor="email" className="modal__label">
         Email*
         <input
           type="email"
-          id="email"
+          //   id="email"
           className="modal__input"
           placeholder="Email"
           minLength="2"
-          //   value={values.name}
-          //   onChange={handleChange}
+          value={values.email}
+          onChange={handleChange}
           name="email"
           required
         />
@@ -36,16 +51,16 @@ function RegisterModal({ handleCloseClick, isOpen, isLoading }) {
         Password*
         <input
           type="password"
-          id="password"
+          //   id="password"
           className="modal__input"
           placeholder="Password"
-          //   value={values.imageUrl}
-          //   onChange={handleChange}
+          value={values.password}
+          onChange={handleChange}
           name="password"
           required
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="name" className="modal__label">
         Name*
         <input
           type="text"
@@ -53,21 +68,21 @@ function RegisterModal({ handleCloseClick, isOpen, isLoading }) {
           className="modal__input"
           placeholder="Name"
           minLength="2"
-          //   value={values.imageUrl}
-          //   onChange={handleChange}
+          value={values.name}
+          onChange={handleChange}
           name="name"
           required
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="avatarUrl" className="modal__label">
         Avatar Url*
         <input
           type="url"
           id="avatarUrl"
           className="modal__input"
           placeholder="Avatar Url"
-          //   value={values.imageUrl}
-          //   onChange={handleChange}
+          value={values.avatarUrl}
+          onChange={handleChange}
           name="avatarUrl"
           required
         />
