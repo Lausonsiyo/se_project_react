@@ -56,6 +56,26 @@
   align-items: center;
 }
 
+.header__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.header__button:last-of-type {
+  padding: 0;
+}
+
+.header__logout-button-container {
+  display: flex;
+}
+
 @media screen and (max-width: 650px) {
   .header {
     display: block;
@@ -75,6 +95,12 @@
     margin-right: 12px;
     /* grid-area: name;
     justify-self: center; */
+  }
+
+  .header__logout-button-container {
+    display: grid;
+    grid-area: name;
+    justify-items: center;
   }
 
   .header__avatar {

@@ -1,4 +1,5 @@
 /* REACT DEPENDENCIES IMPORTS */
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 /* STYLES SHEETS IMPORTS */
@@ -11,19 +12,24 @@ import avatarimg from "../../assets/avatarimg.png";
 /*  COMPONENTS IMPORTS */
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
+/* CONTEXT IMPORTS */
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+
 function Header({
   handleAddNewGarment,
   weatherData,
   isMobileMenuOpen,
   toggleMobileMenu,
+  isLoggedIn,
+  handleOpenRegisterModal,
+  handleOpenLoginModal,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
 
-  // TODO: hre it is possible to get an access to the URL of the browser, and if it includes "profile" - do something different;
-  // isProfilePage ? ".profile-page" : ''
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -50,23 +56,46 @@ function Header({
         }`}
       >
         {!isMobileMenuOpen && <ToggleSwitch />}
-        <button
-          onClick={handleAddNewGarment}
-          type="button"
-          className="header__add-clothes-button"
-        >
-          + Add clothes
-        </button>
-        <Link className="header__username-link" to="/profile">
-          <div className="header__profile-info">
-            <p className="header__username">Terrence Tegegne</p>
-            <img
-              src={avatarimg}
-              alt="Terrence Tegegne"
-              className="header__avatar"
-            />
-          </div>
-        </Link>
+        {isLoggedIn ? (
+          <>
+            <button
+              onClick={handleAddNewGarment}
+              type="button"
+              className="header__add-clothes-button"
+            >
+              + Add clothes
+            </button>
+            <Link className="header__username-link" to="/profile">
+              <div className="header__profile-info">
+                <p className="header__username">Terrence Tegegne</p>
+                <img
+                  src={avatarimg}
+                  alt="Terrence Tegegne"
+                  className="header__avatar"
+                />
+              </div>
+            </Link>
+          </>
+        ) : (
+          <>
+            <div className="header__logout-button-container">
+              <button
+                className="header__button"
+                onClick={handleOpenRegisterModal}
+                type="button"
+              >
+                Sing Up
+              </button>
+              <button
+                className="header__button"
+                onClick={handleOpenLoginModal}
+                type="button"
+              >
+                Log In
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </header>
   );
