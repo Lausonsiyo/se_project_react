@@ -198,7 +198,6 @@ function App() {
           <AddItemModal
             handleCloseClick={handleCloseClick}
             isOpen={activeModal === "add-garment"}
-            // isOpen={true}
             onAddItem={onAddItem}
             isLoading={isLoading}
           />
@@ -219,7 +218,6 @@ function App() {
             isLoading={isLoading}
             handleSingIn={handleSingIn}
             isOpen={activeModal === "login"}
-            // isOpen={true}
           />
           <RegisterModal
             handleCloseClick={handleCloseClick}
