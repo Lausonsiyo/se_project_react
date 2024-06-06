@@ -1,14 +1,25 @@
+/* REACT DEPENDENCIES IMPORTS */
+import { useContext } from "react";
+
 /* STRYLE SHEET IMPORTS */
 import "./ClothesSection.css";
 
 /* COMPONENT IMPORTS */
 import ItemCard from "../ItemCard/ItemCard";
 
+/* CONTEXT IMPORTS */
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+
 function ClothesSection({
   handleCardClick,
   clothingItems,
   handleAddNewGarment,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+  const ownCards = clothingItems.filter(
+    (item) => item.owner === currentUser._id
+  );
+
   return (
     <div className="clothes-section">
       <div className="clothes-section__navbar">
@@ -21,7 +32,7 @@ function ClothesSection({
         </button>
       </div>
       <ul className="clothes-section__items">
-        {clothingItems.map((item) => {
+        {ownCards.map((item) => {
           return (
             <ItemCard
               key={item._id}
