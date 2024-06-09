@@ -37,4 +37,29 @@ function removeItem(id) {
   });
 }
 
-export { getItems, addItem, removeItem, handleServerResponse, baseUrl };
+function likeCard(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+function dislikeCard(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export {
+  dislikeCard,
+  likeCard,
+  getItems,
+  addItem,
+  removeItem,
+  handleServerResponse,
+  baseUrl,
+};

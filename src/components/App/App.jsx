@@ -8,7 +8,13 @@ import "./App.css";
 /* UTILS IMPORT */
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import { coordinates, APIkey } from "../../utils/constants.js";
-import { getItems, addItem, removeItem } from "../../utils/api.js";
+import {
+  getItems,
+  addItem,
+  removeItem,
+  likeCard,
+  dislikeCard,
+} from "../../utils/api.js";
 import * as auth from "../../utils/auth.js";
 
 /* COMPONENTS IMPORTS */
@@ -23,6 +29,7 @@ import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 /* CONTEXT IMPORTS */
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
@@ -75,6 +82,10 @@ function App() {
     setActiveModal("register");
   };
 
+  const handleOpenEditProfileModal = () => {
+    setActiveModal("editProfile");
+  };
+
   const handleCloseClick = () => {
     setActiveModal("");
   };
@@ -109,6 +120,26 @@ function App() {
       .catch((error) => console.error(error));
   };
 
+  /* CARD LIKE AND DISLIKE HANDLER */
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    !isLiked
+      ? likeCard(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : dislikeCard(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
   /* USE EFFECT HOOKS */
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -138,6 +169,14 @@ function App() {
         .catch(console.error);
     }
   }, [isLoggedIn]);
+
+  /* EDIT PROFILE HANDLER */
+  const handleEditProfile = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    return auth.editProfile({ name, avatar }, token).then((res) => {
+      setCurrentUser(res);
+    });
+  };
 
   /* AUTHORIZATION HANDLER */
   const handleSingUp = (values) => {
@@ -173,9 +212,11 @@ function App() {
                 path="/"
                 element={
                   <Main
+                    isLoggedIn={isLoggedIn}
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -187,6 +228,9 @@ function App() {
                       handleAddNewGarment={handleAddNewGarment}
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
+                      handleOpenEditProfileModal={handleOpenEditProfileModal}
+                      isLoggedIn={isLoggedIn}
+                      setIsLoggedIn={setIsLoggedIn}
                     />
                   </ProtectedRoute>
                 }
@@ -226,6 +270,12 @@ function App() {
             handleSingUp={handleSingUp}
             isOpen={activeModal === "register"}
             // isOpen={true}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "editProfile"}
+            handleCloseClick={handleCloseClick}
+            isLoading={isLoading}
+            handleEditProfile={handleEditProfile}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>

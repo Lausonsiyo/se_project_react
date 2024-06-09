@@ -7,7 +7,6 @@ import "./Header.css";
 
 /* IMAGES IMPORTS */
 import logo from "../../assets/logo.svg";
-import avatarimg from "../../assets/avatarimg.png";
 
 /*  COMPONENTS IMPORTS */
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
@@ -67,12 +66,34 @@ function Header({
             </button>
             <Link className="header__username-link" to="/profile">
               <div className="header__profile-info">
-                <p className="header__username">Terrence Tegegne</p>
-                <img
-                  src={avatarimg}
-                  alt="Terrence Tegegne"
-                  className="header__avatar"
-                />
+                <p className="header__username">{currentUser?.name}</p>
+                {currentUser?.avatar ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                    className="header__avatar"
+                  />
+                ) : (
+                  <div
+                    className="header__avatar-placeholder"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "50%",
+                      backgroundColor: "#ccc",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                      color: "#fff",
+                    }}
+                  >
+                    {currentUser?.name
+                      ? currentUser.name.charAt(0).toUpperCase()
+                      : "?"}
+                  </div>
+                )}
               </div>
             </Link>
           </>

@@ -1,5 +1,6 @@
 .sidebar {
   display: flex;
+  flex-direction: column;
 }
 
 .sidebar__avatar {
@@ -13,5 +14,24 @@
   font-size: 20px;
   font-weight: 700;
   line-height: 24.8px;
+  text-align: left;
+}
+
+.sidebar__user-interface {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.sidebar__user-button {
+  margin: 0;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: none;
   text-align: left;
 }
