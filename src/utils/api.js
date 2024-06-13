@@ -12,7 +12,7 @@ function getItems() {
   return request(`${baseUrl}/items`);
 }
 
-function addItem({ name, weather, imageUrl }) {
+function addItem({ name, weather, imageUrl }, token) {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -27,7 +27,7 @@ function addItem({ name, weather, imageUrl }) {
   });
 }
 
-function removeItem(id) {
+function removeItem(id, token) {
   return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {

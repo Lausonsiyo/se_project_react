@@ -8,9 +8,9 @@ import "./SideBar.css";
 /* CONTEXT IMPORTS */
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
-function SideBar({ setLoggedIn, handleOpenEditProfileModal }) {
+function SideBar({ setIsLoggedIn, handleOpenEditProfileModal }) {
   const navigate = useNavigate();
-  const { currentUser } = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <div className="sidebar">
@@ -55,7 +55,7 @@ function SideBar({ setLoggedIn, handleOpenEditProfileModal }) {
           type="text"
           onClick={() => {
             navigate("/");
-            setLoggedIn(false);
+            setIsLoggedIn(false);
             localStorage.removeItem("jwt");
           }}
         >

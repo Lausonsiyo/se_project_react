@@ -35,11 +35,13 @@
 }
 
 .header__avatar {
-  padding: 0 0 0 15px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
 }
 
 .header__username {
-  margin: 0;
+  margin-right: 12px;
 }
 
 .header__username-link {

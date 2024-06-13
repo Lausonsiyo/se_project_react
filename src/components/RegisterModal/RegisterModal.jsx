@@ -10,7 +10,13 @@ import "./RegisterModal.css";
 /* HOOKS IMPORTS */
 import { useForm } from "../../hooks/hooks.jsx";
 
-function RegisterModal({ handleCloseClick, isOpen, isLoading, handleSingUp }) {
+function RegisterModal({
+  handleCloseClick,
+  isOpen,
+  isLoading,
+  handleSingUp,
+  handleOpenLoginModal,
+}) {
   const { values, handleChange, setValues } = useForm({
     email: "",
     password: "",
@@ -87,7 +93,9 @@ function RegisterModal({ handleCloseClick, isOpen, isLoading, handleSingUp }) {
           required
         />
       </label>
-      <button className="modal__button_log-in">Or Log in</button>
+      <button className="modal__button_log-in" onClick={handleOpenLoginModal}>
+        Or Log in
+      </button>
     </ModalWithForm>
   );
 }

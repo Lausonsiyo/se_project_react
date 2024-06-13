@@ -21,7 +21,7 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
 
   function handleLike() {
     onCardLike({
-      id: item.id,
+      id: item._id,
       isLiked: isLiked,
       currentUser: currentUser,
     });

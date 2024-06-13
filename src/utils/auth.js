@@ -1,10 +1,10 @@
 import { baseUrl, handleServerResponse } from "./api";
 
-export const singUp = ({ email, password, name, avatar }) => {
+export const singUp = ({ email, password, name, avatarUrl }) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password, name, avatar }),
+    body: JSON.stringify({ email, password, name, avatar: avatarUrl }),
   }).then(handleServerResponse);
 };
 

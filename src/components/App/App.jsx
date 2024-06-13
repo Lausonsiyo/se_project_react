@@ -95,10 +95,11 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  /* -ADD, REMOVE- FUNCTIONALITY FUNCTIONS  */
+  /* -ADD, REMOVE - FUNCTIONALITY FUNCTIONS  */
   const onAddItem = (values) => {
+    const token = localStorage.getItem("jwt");
     setIsLoading(true);
-    addItem(values)
+    addItem(values, token)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
       })
@@ -110,7 +111,8 @@ function App() {
   };
 
   const handleCardDelete = () => {
-    removeItem(selectedCard._id)
+    const token = localStorage.getItem("jwt");
+    removeItem(selectedCard._id, token)
       .then(() => {
         setClothingItems(
           clothingItems.filter((item) => item._id !== selectedCard._id)
@@ -165,6 +167,7 @@ function App() {
         .checkToken(token)
         .then((res) => {
           setIsLoggedIn(true);
+          setCurrentUser(res);
         })
         .catch(console.error);
     }
@@ -175,20 +178,28 @@ function App() {
     const token = localStorage.getItem("jwt");
     return auth.editProfile({ name, avatar }, token).then((res) => {
       setCurrentUser(res);
+      handleCloseClick();
     });
   };
 
   /* AUTHORIZATION HANDLER */
   const handleSingUp = (values) => {
     console.log(values);
-    auth.singUp(values);
+    auth.singUp(values).then(() => {
+      setCurrentUser(values);
+      setIsLoggedIn(true);
+    });
+    handleCloseClick();
   };
 
   const handleSingIn = (values) => {
     console.log(values);
     auth.singIn(values).then((res) => {
       localStorage.setItem("jwt", res.token);
+      setCurrentUser(values);
+      setIsLoggedIn(true);
     });
+    handleCloseClick();
   };
 
   return (
@@ -225,6 +236,7 @@ function App() {
                 element={
                   <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
+                      onCardLike={handleCardLike}
                       handleAddNewGarment={handleAddNewGarment}
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
@@ -262,6 +274,7 @@ function App() {
             isLoading={isLoading}
             handleSingIn={handleSingIn}
             isOpen={activeModal === "login"}
+            handleOpenRegisterModal={handleOpenRegisterModal}
           />
           <RegisterModal
             handleCloseClick={handleCloseClick}
@@ -269,6 +282,7 @@ function App() {
             isLoading={isLoading}
             handleSingUp={handleSingUp}
             isOpen={activeModal === "register"}
+            handleOpenLoginModal={handleOpenLoginModal}
             // isOpen={true}
           />
           <EditProfileModal
