@@ -191,10 +191,7 @@ function App() {
     auth
       .singUp(values)
       .then(() => {
-        setCurrentUser(values);
-        setIsLoggedIn(true);
-        handleCloseClick();
-        onDone();
+        handleSingIn(values, onDone);
       })
       .catch((err) => console.error("Error signing up:", err));
   };
@@ -285,6 +282,7 @@ function App() {
             handleSingIn={handleSingIn}
             isOpen={activeModal === "login"}
             handleOpenRegisterModal={handleOpenRegisterModal}
+            handleSingUp={handleSingUp}
           />
           <RegisterModal
             handleCloseClick={handleCloseClick}
@@ -293,7 +291,6 @@ function App() {
             handleSingUp={handleSingUp}
             isOpen={activeModal === "register"}
             handleOpenLoginModal={handleOpenLoginModal}
-            // isOpen={true}
           />
           <EditProfileModal
             isOpen={activeModal === "editProfile"}

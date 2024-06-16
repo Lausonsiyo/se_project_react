@@ -16,6 +16,7 @@ function LoginModal({
   isLoading,
   handleSingIn,
   handleOpenRegisterModal,
+  handleSingUp,
 }) {
   const { values, handleChange, setValues, resetForm } = useForm({
     email: "",
@@ -24,9 +25,12 @@ function LoginModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSingIn(values, resetForm);
+    if (isRegistering) {
+      handleSingUp(values, resetForm);
+    } else {
+      handleSingIn(values, resetForm);
+    }
   };
-
   return (
     <ModalWithForm
       buttonText="Login"
