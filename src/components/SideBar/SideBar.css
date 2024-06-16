@@ -1,6 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
 }
 
 .sidebar__avatar {
