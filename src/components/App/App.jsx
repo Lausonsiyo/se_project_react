@@ -91,17 +91,18 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   /* -ADD, REMOVE - FUNCTIONALITY FUNCTIONS  */
-  const onAddItem = (values) => {
+
+  const onAddItem = (values, onDone) => {
     const token = localStorage.getItem("jwt");
     setIsLoading(true);
     addItem(values, token)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
+        onDone();
       })
       .then(handleCloseClick)
       .catch((error) => console.error(error))
@@ -176,30 +177,39 @@ function App() {
   /* EDIT PROFILE HANDLER */
   const handleEditProfile = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
-    return auth.editProfile({ name, avatar }, token).then((res) => {
-      setCurrentUser(res);
-      handleCloseClick();
-    });
+    return auth
+      .editProfile({ name, avatar }, token)
+      .then((res) => {
+        setCurrentUser(res);
+        handleCloseClick();
+      })
+      .catch((err) => console.error("Error:", err));
   };
 
   /* AUTHORIZATION HANDLER */
-  const handleSingUp = (values) => {
-    console.log(values);
-    auth.singUp(values).then(() => {
-      setCurrentUser(values);
-      setIsLoggedIn(true);
-    });
-    handleCloseClick();
+  const handleSingUp = (values, onDone) => {
+    auth
+      .singUp(values)
+      .then(() => {
+        setCurrentUser(values);
+        setIsLoggedIn(true);
+        handleCloseClick();
+        onDone();
+      })
+      .catch((err) => console.error("Error signing up:", err));
   };
 
-  const handleSingIn = (values) => {
-    console.log(values);
-    auth.singIn(values).then((res) => {
-      localStorage.setItem("jwt", res.token);
-      setCurrentUser(values);
-      setIsLoggedIn(true);
-    });
-    handleCloseClick();
+  const handleSingIn = (values, onDone) => {
+    auth
+      .singIn(values)
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setCurrentUser(values);
+        setIsLoggedIn(true);
+        handleCloseClick();
+        onDone();
+      })
+      .catch((err) => console.error("Error signing in", err));
   };
 
   return (

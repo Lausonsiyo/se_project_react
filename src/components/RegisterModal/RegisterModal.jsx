@@ -17,7 +17,7 @@ function RegisterModal({
   handleSingUp,
   handleOpenLoginModal,
 }) {
-  const { values, handleChange, setValues } = useForm({
+  const { values, handleChange, setValues, resetForm } = useForm({
     email: "",
     password: "",
     name: "",
@@ -26,7 +26,7 @@ function RegisterModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSingUp(values);
+    handleSingUp(values, resetForm);
   };
 
   return (

@@ -17,14 +17,14 @@ function LoginModal({
   handleSingIn,
   handleOpenRegisterModal,
 }) {
-  const { values, handleChange, setValues } = useForm({
+  const { values, handleChange, setValues, resetForm } = useForm({
     email: "",
     password: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSingIn(values);
+    handleSingIn(values, resetForm);
   };
 
   return (
