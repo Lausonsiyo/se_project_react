@@ -25,11 +25,7 @@ function LoginModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isRegistering) {
-      handleSingUp(values, resetForm);
-    } else {
-      handleSingIn(values, resetForm);
-    }
+    handleSingIn(values, resetForm);
   };
   return (
     <ModalWithForm

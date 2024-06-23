@@ -153,13 +153,22 @@ function App() {
       .catch(console.error);
   }, []);
 
+  // useEffect(() => {
+  //   getItems()
+  //     .then((items) => {
+  //       setClothingItems(items);
+  //     })
+  //     .catch(console.error);
+  // }, []);
   useEffect(() => {
-    getItems()
-      .then((items) => {
-        setClothingItems(items);
-      })
-      .catch(console.error);
-  }, []);
+    if (currentUser._id) {
+      getItems()
+        .then((items) => {
+          setClothingItems(items);
+        })
+        .catch(console.error);
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");

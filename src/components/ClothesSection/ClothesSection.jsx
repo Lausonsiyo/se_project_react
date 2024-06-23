@@ -18,9 +18,12 @@ function ClothesSection({
   isLoggedIn,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  const ownCards = clothingItems.filter(
-    (item) => item.owner === currentUser._id
-  );
+  // const ownCards = clothingItems.filter(
+  //   (item) => item.owner === currentUser._id
+  // );
+  const ownCards = currentUser
+    ? clothingItems.filter((item) => item.owner === currentUser._id)
+    : [];
 
   return (
     <div className="clothes-section">
