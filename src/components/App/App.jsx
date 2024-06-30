@@ -129,15 +129,16 @@ function App() {
     !isLiked
       ? likeCard(id, token)
           .then((updatedCard) => {
+            // debugger;
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard.data : item))
+              cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
           .catch((err) => console.log(err))
       : dislikeCard(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard.data : item))
+              cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
           .catch((err) => console.log(err));
@@ -153,22 +154,13 @@ function App() {
       .catch(console.error);
   }, []);
 
-  // useEffect(() => {
-  //   getItems()
-  //     .then((items) => {
-  //       setClothingItems(items);
-  //     })
-  //     .catch(console.error);
-  // }, []);
   useEffect(() => {
-    if (currentUser._id) {
-      getItems()
-        .then((items) => {
-          setClothingItems(items);
-        })
-        .catch(console.error);
-    }
-  }, [currentUser]);
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch(console.error);
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -177,7 +169,7 @@ function App() {
         .checkToken(token)
         .then((res) => {
           setIsLoggedIn(true);
-          setCurrentUser(res);
+          setCurrentUser(res.user);
         })
         .catch(console.error);
     }
