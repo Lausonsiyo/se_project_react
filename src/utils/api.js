@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+import { BASE_URL } from "./constants";
 
 const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -9,11 +9,11 @@ function request(url, options) {
 }
 
 function getItems() {
-  return request(`${baseUrl}/items`);
+  return request(`${BASE_URL}/items`);
 }
 
 function addItem({ name, weather, imageUrl }, token) {
-  return request(`${baseUrl}/items`, {
+  return request(`${BASE_URL}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function addItem({ name, weather, imageUrl }, token) {
 }
 
 function removeItem(id, token) {
-  return request(`${baseUrl}/items/${id}`, {
+  return request(`${BASE_URL}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -38,7 +38,7 @@ function removeItem(id, token) {
 }
 
 function likeCard(id, token) {
-  return request(`${baseUrl}/items/${id}/likes`, {
+  return request(`${BASE_URL}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       authorization: `Bearer ${token}`,
@@ -46,7 +46,7 @@ function likeCard(id, token) {
   });
 }
 function dislikeCard(id, token) {
-  return request(`${baseUrl}/items/${id}/likes`, {
+  return request(`${BASE_URL}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
@@ -61,5 +61,5 @@ export {
   addItem,
   removeItem,
   handleServerResponse,
-  baseUrl,
+  BASE_URL,
 };

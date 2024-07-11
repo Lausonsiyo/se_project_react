@@ -115,3 +115,8 @@ export const coordinates = {
 };
 
 export const APIkey = "3ddc7126764156f59c5b4ca6dd240fe7";
+
+export const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.finalproject-tt.jumpingcrab.com"
+    : "http://localhost:3001";

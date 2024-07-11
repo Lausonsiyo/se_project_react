@@ -24,7 +24,7 @@ Weather App Screenshot
 
 ## Demo Video
 
-Weather App Demo Video
+(https://youtu.be/TGzC1_AgtUk)
 
 ## GitHub Pages
 
@@ -33,3 +33,11 @@ Weather App GitHub Pages
 ## BACK END REPO
 
 https://github.com/Lausonsiyo/se_project_express
+
+## Domain name
+
+jumpingcrab.com/
+
+## link
+
+https://finalproject-tt.jumpingcrab.com/

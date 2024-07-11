@@ -1,7 +1,8 @@
-import { baseUrl, handleServerResponse } from "./api";
+import { handleServerResponse } from "./api";
+import { BASE_URL } from "./constants";
 
 export const singUp = ({ email, password, name, avatarUrl }) => {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password, name, avatar: avatarUrl }),
@@ -9,7 +10,7 @@ export const singUp = ({ email, password, name, avatarUrl }) => {
 };
 
 export const singIn = ({ email, password }) => {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -17,7 +18,7 @@ export const singIn = ({ email, password }) => {
 };
 
 export const checkToken = (token) => {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -27,7 +28,7 @@ export const checkToken = (token) => {
 };
 
 export const editProfile = ({ name, avatar }, token) => {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
