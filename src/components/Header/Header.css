@@ -1,0 +1,39 @@
+.header__container {
+  max-height: 40px;
+  padding-top: 32px;
+}
+
+.header__logo {
+  width: 90px;
+  height: 40px1;
+}
+
+.header__date {
+  margin-left: 24px;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.header__buttons {
+  margin-left: auto;
+}
+
+.header__buttons_add-clothes {
+  margin-left: auto;
+}
+
+.header__user-information {
+  display: flex;
+}
+
+.header__user-information_name {
+  margin-left: 20px;
+}
+
+.header__user-information_avatar {
+  margin-left: 12px;
+}

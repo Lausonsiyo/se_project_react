@@ -1,0 +1,10 @@
+.page {
+  background-color: #f3f3f3;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.page__content {
+  max-width: 1360px;
+  margin: auto;
+}
