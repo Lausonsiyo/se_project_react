@@ -1,15 +1,8 @@
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #0000004d;
+.modal__form {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
-.modal__content {
-  background-color: white;
+.modal__title {
+  margin: 0;
 }
