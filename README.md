@@ -40,4 +40,4 @@ jumpingcrab.com/
 
 ## link
 
-https://finalproject-tt.jumpingcrab.com/
+https://se-project-react-nu.vercel.app/
